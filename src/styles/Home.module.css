@@ -1,0 +1,112 @@
+.home {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  padding: 90px 150px;
+  background-color: rgba(174, 174, 174, 0.155);
+}
+.sidebar span {
+  padding: 5px 10px;
+  font-size: 15px;
+  border-radius: 1.5rem;
+  width: 175px;
+}
+.sidebar span:hover {
+  background-color: rgba(193, 192, 192, 0.71);
+  font-weight: 600;
+  cursor: pointer;
+}
+.sidebar {
+  display: inherit;
+  flex-direction: column;
+  padding: 30px 40px 0 40px;
+  line-height: 20px;
+  width: 20%;
+  height: 100vh;
+  border-radius: 0.3rem;
+  z-index: 1;
+  background-color: #ffffff;
+  border: 1px solid rgba(128, 128, 128, 0.415);
+}
+.content {
+  width: 60%;
+}
+.activeUsers {
+  padding: 40px 20px 0 40px;
+  width: 20%;
+  height: 100vh;
+  border-radius: 0.3rem;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid rgba(128, 128, 128, 0.415);
+}
+.post{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 130px;
+    padding:25px 40px;
+    margin: 0 40px 10px 40px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0.3rem;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    object-fit: contain;
+    font-size: 14px;
+}
+.btngroup{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.text{
+    display: flex;
+    padding: 10px;
+    color: gray;
+    font-weight: 600;
+    width: 500px;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    border: 1px solid gray;
+    height: 40px;
+    margin-left: 10px;
+}
+.text:hover{
+    background-color: rgba(128, 128, 128, 0.219);
+}
+.profileImage {
+  width: 42px;
+  border-radius: 50%;
+  transition: opacity 0.2s ease-in-out;
+}
+@media screen and (max-width: 844px) {
+  .home {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  .sidebar {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  .content {
+    width: 100%;
+    padding: 0;
+    margin: 90px 0;
+  }
+}
+.options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px 0;
+}

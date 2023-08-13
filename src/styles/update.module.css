@@ -1,0 +1,31 @@
+.wrapper{
+    display: flex;
+    padding: 100px 200px;
+    height: 100vh;
+    justify-content: space-around;
+}
+.profilePicture{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.otherInfo{
+    width: 70%;
+    padding: 50px;
+}
+.avatar{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid gray;
+    position: absolute;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.default{
+    width: 150px;
+    height: 150px;
+}

@@ -1,0 +1,30 @@
+.signup{
+    background-color :#00a400;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    width: 160px;
+    height: 36px;
+    border: none;
+    border-radius: 0.3rem;
+}
+.login{
+    background-color :#00a400;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    width: 120px;
+    height: 36px;
+    border: none;
+    border-radius: 0.3rem;
+}
+.post{
+    background-color :#312ee8;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    width: 90px;
+    height: 28px;
+    border: none;
+    border-radius: 0.3rem;
+}

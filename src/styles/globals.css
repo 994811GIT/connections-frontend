@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;900&display=swap');
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Nunito', sans-serif;
+  /* background-color: rgba(232, 236, 227, 0.623); */
+}
+h1{
+  font-weight: 900;
+  font-size: 36px;
+  /* width: 900px; */
+}
+[contenteditable=true]:empty:before{
+  content: attr(data-placeholder);
+  pointer-events: none;
+  font-size: 14px;
+  color: gray;
+}

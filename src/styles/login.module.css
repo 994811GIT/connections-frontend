@@ -1,0 +1,44 @@
+.body {
+    height: 100vh;
+    position: relative;
+    background-color: rgba(218, 224, 236, 0.271);
+    overflow-y: scroll;
+  }
+  .registration {
+    /* position: absolute; */
+    display: flex;
+    flex-direction: column;
+    width: 430px;
+    height: auto;
+    padding: 30px;
+    margin: 30px auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.6rem;
+    background-color: #fff;
+    /* background-color: rgba(69, 67, 69, 0.222) ; */
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .image {
+    width: 250px;
+  }
+  .upperBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 30px; */
+    padding-top: 50px;
+  }
+  .datePicker {
+    display: flex;
+    flex-direction: column;
+  }
+  .genderSelector {
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    margin-left: 18px;
+  }
+  

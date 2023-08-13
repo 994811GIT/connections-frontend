@@ -1,0 +1,43 @@
+.post{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    padding:30px 40px;
+    margin: 0 40px 10px 40px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0.3rem;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    object-fit: contain;
+    font-size: 14px;
+}
+.avatar{
+    width: 36px;
+    border-radius: 50%;
+}
+.userDetails{
+    display: flex;
+    align-items: center;
+}
+.userDetails span{
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 20px;
+}
+.content{
+    margin: 20px 0;
+    display: inherit;
+    text-align: justify;
+}
+.imageView img{
+    max-width: 100%;
+}
+.imageView{
+    object-fit: cover;
+}
+@media screen and (max-width: 844px) {
+    .post{
+        margin: 15px;
+    }
+}
