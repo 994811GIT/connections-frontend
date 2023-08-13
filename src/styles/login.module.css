@@ -41,4 +41,8 @@
     padding: 18px;
     margin-left: 18px;
   }
-  
+  .signuplink {
+    margin-top: 30px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+  }

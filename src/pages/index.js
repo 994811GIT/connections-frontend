@@ -10,6 +10,7 @@ import { MdCollections, MdVideoCall, MdOutlineEventNote } from "react-icons/md";
 import ModalBox from '../../components/modalbox'
 import { useEffect, useState } from 'react'
 import instance from '../../utils/axios'
+import { getUser } from '../../utils'
 
 export default withAuth(function Home() {
 
@@ -64,17 +65,24 @@ export default withAuth(function Home() {
     },
   ]
 
-  // const [post,setPost] = useState([])
+  const [post,setPost] = useState([])
+  const [user, setUser] = useState("")
 
-  // const getPosts = async() =>{
-  //   const data = await instance.get('/post')
-  //   console.log(data)
-  //   setPost(data.data)
-  // }
+  const getPosts = async() =>{
+    const data = await instance.get('/post')
+    console.log(data.data)
+    setPost(data.data)
+  }
 
-  // useEffect(() => {
-  //   getPosts()
-  // }, [])
+  const getUserData = async() =>{
+    const res = await instance.get(`/user/${getUser()}`)
+    setUser(res.data)
+  }
+
+  useEffect(() => {
+    getPosts()
+    getUserData()
+  }, [])
 
   const [showModal, setShowModal] = useState(false)
 
@@ -102,7 +110,7 @@ export default withAuth(function Home() {
         <div className={styles.content}>
           <div className={styles.post}>
             <div className={styles.btngroup}>
-              <img className={styles.profileImage} src="/assets/avatars/gregor.jpg" />
+              <img className={styles.profileImage} src={user.profilePicture}/>
               <input className={styles.text} type="button" value="Write something" onClick={handleClick} />
             </div>
             <div className={styles.options}>
@@ -112,7 +120,7 @@ export default withAuth(function Home() {
             </div>
           </div>
           {
-            posts.map((item, index) => {
+            post.map((item, index) => {
               return (
                 <PostCard key={index} {...item} />
               )
@@ -130,7 +138,7 @@ export default withAuth(function Home() {
           }
         </div>
       </div>
-      {showModal && <ModalBox onClick={closeModal} />}
+      {showModal && <ModalBox onClick={closeModal} user={user}/>}
     </>
   )
 }

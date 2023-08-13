@@ -55,8 +55,8 @@ const ModalBox = (props) => {
         <div className={styles.modalWrapper}>
             <div className={styles.modalContainer}>
                 <div className={styles.modalHeader}>
-                    <ActiveUsers avatar="/assets/avatars/gregor.jpg" customeClass="modalAvatar" modalClass="modalClass" />
-                    <h3>Gregor Thomas</h3>
+                    <ActiveUsers avatar={props.user.profilePicture} customeClass="modalAvatar" modalClass="modalClass" />
+                    <h3>{props.user.name}</h3>
                 </div>
                 <div className={styles.content}>
                     <div className={styles.modalBox} aria-multiline={true} data-gramm="false" onInput={(e) => handleChange(e)} contentEditable="true" role="textbox" data-placeholder="What do you want to talk about?" suppressContentEditableWarning={true}>

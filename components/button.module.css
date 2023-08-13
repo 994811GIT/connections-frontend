@@ -28,3 +28,23 @@
     border: none;
     border-radius: 0.3rem;
 }
+.blue{
+    background-color :#0855e3;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100px;
+    height: 36px;
+    border: none;
+    border-radius: 0.3rem;
+}
+.green{
+    background-color :#00a400;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100px;
+    height: 36px;
+    border: none;
+    border-radius: 0.3rem;
+}

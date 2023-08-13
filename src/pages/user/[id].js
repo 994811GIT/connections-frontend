@@ -4,25 +4,49 @@ import Navbar from "../../../components/navbar";
 import ImageViewer from "../../../components/imageViewer";
 import { posts } from "../../../utils/posts";
 import withAuth from "../../../utils/withAuth";
+import instance from "../../../utils/axios";
+import { getUser } from "../../../utils";
+import { useEffect, useState } from "react";
 
 const Profile = () => {
 
     const router = useRouter();
+
+    const [user, setUser] = useState([])
+    const [post, setPost] = useState([])
+
+    const getUserData = async() =>{
+        const res = await instance.get(`/user/${getUser()}`)
+        console.log(res)
+        setUser(res.data)
+    }
+    const getPosts = async() =>{
+        const userId = getUser()
+        console.log(userId)
+        const res = await instance.get(`/post/${userId}`)
+        console.log(res)
+        setPost(res.data)
+    }
+
+    useEffect(()=>{
+        getUserData()
+        getPosts()
+    },[])
 
     return (
         <div>
             <Navbar currentPage="profile" />
             <div className={styles.userInfo}>
                 <div className={styles.avatar}>
-                    <img className={styles.profileImage} src="/assets/avatars/gregor.jpg" />
+                    <img className={styles.profileImage} src={user.profilePicture} />
                     <div className={styles.widget}>
                         <span>Edit</span>
                     </div>
                 </div>
                 <div className={styles.userDetails}>
                     <div className={styles.user}>
-                        <span className={styles.userName}>Gregor Thomas</span>
-                        <span className={styles.category}>Fashion model</span>
+                        <span className={styles.userName}>{user.name}</span>
+                        <span className={styles.category}>{user.category}</span>
                     </div>
                     <div className={styles.followerCount}>
                         <div className={styles.info}>
@@ -40,17 +64,16 @@ const Profile = () => {
                     </div>
                     <div className={styles.bio}>
                         <p>
-                            Gregor Thomas grew up in Venice, California, the second son of a Vietnam veteran turned policeman. Initially focusing on performing arts, Michael attended the prestigious Alexander Hamilton Academy in Los Angeles.
-                            After serving in the U.S. Army as a tracked vehicle operator, he returned to civilian life and began writing short stories and screenplays, and directing short films and music videos.
+                           {user.bio} 
                         </p>
-                        <a href="https://youtube.com/@BLUME_Music">https://youtube.com/@BLUME_Music</a>
+                        <a href={user.link}>{user.link}</a>
                     </div>
                 </div>
             </div>
             <div className={styles.timeline}>
                 <div className={styles.posts}>
                     {
-                        posts.map((item, index) => {
+                        post.map((item, index) => {
                             return (
                                 <div className={styles.singleImage} key={index}>
                                     <ImageViewer image={item.image} />

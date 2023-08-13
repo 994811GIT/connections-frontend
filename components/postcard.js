@@ -4,11 +4,11 @@ const PostCard = (props) => {
     return (
         <div className={styles.post}>
             <div className={styles.userDetails}>
-                <img className={styles.avatar} src={props.avatar} />
-                <span>{props.username}</span>
+                <img className={styles.avatar} src={props.user.profilePicture} />
+                <span>{props.user.name}</span>
             </div>
             <div className={styles.content}>
-                <p>{props.text}</p>
+                <p>{props.content}</p>
             </div>
             <div className={styles.imageView}>
                 <img src={props.image}/>
