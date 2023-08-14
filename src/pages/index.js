@@ -72,6 +72,7 @@ export default withAuth(function Home() {
     const data = await instance.get('/post')
     console.log(data.data)
     setPost(data.data)
+    // console.log(data.data.length)
   }
 
   const getUserData = async() =>{
@@ -95,7 +96,7 @@ export default withAuth(function Home() {
 
   return (
     <>
-      <Navbar currentPage="home" />
+      <Navbar currentPage="home" user={getUser()} />
       <div className={styles.home}>
         <div className={styles.sidebar}>
           <span><FcHome />Groups</span>

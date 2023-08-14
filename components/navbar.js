@@ -12,6 +12,7 @@ const Navbar = (props) => {
 
     useEffect(() => {
         setToken(getToken())
+        console.log(props)
     })
 
     const logout = () => {
@@ -32,7 +33,8 @@ const Navbar = (props) => {
                         <Link className={props.currentPage == "home" ? styles.active : styles.off} href={'/'}>Home</Link>
                     </span>
                     <span>
-                        <Link className={props.currentPage == "profile" ? styles.active : styles.off} href={'/user/1'}>Profile</Link>
+                        <div className={props.currentPage == "profile" ? styles.active : styles.off}
+                            onClick={()=>{ router.push( { pathname : `/user/${props.user}`})}}>Profile</div>
                     </span>
                     <span>
                         {

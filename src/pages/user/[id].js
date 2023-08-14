@@ -7,35 +7,46 @@ import withAuth from "../../../utils/withAuth";
 import instance from "../../../utils/axios";
 import { getUser } from "../../../utils";
 import { useEffect, useState } from "react";
+import Button from "../../../components/button";
+import withRouter from "next/router";
 
-const Profile = () => {
+const Profile = (props) => {
 
     const router = useRouter();
 
     const [user, setUser] = useState([])
     const [post, setPost] = useState([])
+    const [userId, setUserId] = useState('')
 
-    const getUserData = async() =>{
-        const res = await instance.get(`/user/${getUser()}`)
-        console.log(res)
-        setUser(res.data)
+    const getUserData = async () => {
+        try {
+            const userId = router.query.id
+            const res = await instance.get(`/user/${userId}`)
+            setUser(res.data)
+        } catch (e) {
+            console.log(e)
+        }
+
     }
-    const getPosts = async() =>{
-        const userId = getUser()
-        console.log(userId)
-        const res = await instance.get(`/post/${userId}`)
-        console.log(res)
-        setPost(res.data)
+    const getPosts = async () => {
+        try {
+            const userId = router.query.id;
+            const res = await instance.get(`/post/${userId}`)
+            setPost(res.data)
+        } catch (e) {
+            console.log({ message: e })
+        }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getUserData()
         getPosts()
-    },[])
+        setUserId(getUser())
+    }, [router.query])
 
     return (
         <div>
-            <Navbar currentPage="profile" />
+            <Navbar currentPage="profile" user={userId}/>
             <div className={styles.userInfo}>
                 <div className={styles.avatar}>
                     <img className={styles.profileImage} src={user.profilePicture} />
@@ -50,21 +61,24 @@ const Profile = () => {
                     </div>
                     <div className={styles.followerCount}>
                         <div className={styles.info}>
-                            <span style={{ fontWeight: "600" }}>200</span>
+                            <span style={{ fontWeight: "600" }}>{post.length}</span>
                             <span>posts</span>
                         </div>
                         <div className={styles.info}>
-                            <span style={{ fontWeight: "600" }}>346</span>
+                            <span style={{ fontWeight: "600" }}>0</span>
                             <span>Followers</span>
                         </div>
                         <div className={styles.info}>
-                            <span style={{ fontWeight: "600" }}>186</span>
+                            <span style={{ fontWeight: "600" }}>1</span>
                             <span>Following</span>
+                        </div>
+                        <div className={styles.follow}>
+                            {user._id != getUser() && <span><Button text="Follow" class="green" /></span>}
                         </div>
                     </div>
                     <div className={styles.bio}>
                         <p>
-                           {user.bio} 
+                            {user.bio}
                         </p>
                         <a href={user.link}>{user.link}</a>
                     </div>
