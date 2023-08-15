@@ -1,6 +1,6 @@
 import styles from "./modalbox.module.css"
 import FileUpload from "./fileuploader";
-import { MdCollections } from "react-icons/md";
+import { MdCollections, MdOutlineClear } from "react-icons/md";
 import { Input, Upload } from "antd";
 import { useState } from "react";
 import ActiveUsers from "./activeuser";
@@ -14,7 +14,7 @@ const ModalBox = (props) => {
 
     const [content, setContent] = useState("")
     const [selectedImage, setImage] = useState()
-    const [formData, setFormData] = useState({ content: "", image: "",user : "" })
+    const [formData, setFormData] = useState({ content: "", image: "", user: "" })
 
     // const onImageChange = (e) => {
     //     if (e.target.files && e.target.files[0]) {
@@ -43,7 +43,7 @@ const ModalBox = (props) => {
 
     const onClick = async (e) => {
         if (content || selectedImage) {
-            const data = {...formData}
+            const data = { ...formData }
             data.user = getUser()
             const result = await instance.post('/post', data)
             console.log(result)
@@ -55,8 +55,11 @@ const ModalBox = (props) => {
         <div className={styles.modalWrapper}>
             <div className={styles.modalContainer}>
                 <div className={styles.modalHeader}>
-                    <ActiveUsers avatar={props.user.profilePicture} customeClass="modalAvatar" modalClass="modalClass" />
-                    <h3>{props.user.name}</h3>
+                    <div className={styles.userCls}>
+                        <ActiveUsers avatar={props.user.profilePicture} customeClass="modalAvatar" modalClass="modalClass" />
+                        <h3>{props.user.name}</h3>
+                    </div>
+                    <MdOutlineClear className={styles.modalCloseBtn} onClick={props.onClick}/>
                 </div>
                 <div className={styles.content}>
                     <div className={styles.modalBox} aria-multiline={true} data-gramm="false" onInput={(e) => handleChange(e)} contentEditable="true" role="textbox" data-placeholder="What do you want to talk about?" suppressContentEditableWarning={true}>

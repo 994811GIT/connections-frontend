@@ -12,7 +12,7 @@ const Navbar = (props) => {
 
     useEffect(() => {
         setToken(getToken())
-        console.log(props)
+        // console.log(props)
     })
 
     const logout = () => {

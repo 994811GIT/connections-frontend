@@ -43,8 +43,8 @@ export default function Signup() {
                 <Input text="Name" onChange={e=>{onChange(e,"name")}}/>
                 <Input text="username" onChange={e=>{onChange(e,"username")}}/>
                 <Input text="Mobile number or email address" onChange={e=>{onChange(e,"contact")}}/>
-                <Input text="create password" onChange={e=>{onChange(e,"password")}}/>
-                <Input text="Confirm password" onChange={e=>{onChange(e,"confirmPassword")}}/>
+                <Input type="password" text="create password" onChange={e=>{onChange(e,"password")}}/>
+                <Input type="password" text="Confirm password" onChange={e=>{onChange(e,"confirmPassword")}}/>
                 <div className={styles.datePicker}>
                     <label>Date of birth :</label>
                     <CustomDatePicker onChange={onSelect} />

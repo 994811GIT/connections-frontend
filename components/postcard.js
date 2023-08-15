@@ -7,9 +7,9 @@ const PostCard = (props) => {
 
     return (
         <div className={styles.post}>
-            <div className={styles.userDetails} onClick={()=>{ router.push( { pathname : `/user/${props.user._id}`})}}>
-                <img className={styles.avatar} src={props.user.profilePicture} />
-                <span>{props.user.name}</span>
+            <div className={styles.userDetails} >
+                <img className={styles.avatar} src={props.user.profilePicture} onClick={()=>{ router.push( { pathname : `/user/${props.user._id}`})}}/>
+                <span onClick={()=>{ router.push( { pathname : `/user/${props.user._id}`})}}>{props.user.name}</span>
             </div>
             <div className={styles.content}>
                 <p>{props.content}</p>

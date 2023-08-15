@@ -22,9 +22,11 @@ export default function Login() {
             const result = await instance.post('/login', formData)
             setToken(result.data.token)
             setUser(result.data.userId)
-            if (result.data.userData.loginCount == 0) {
+            if (result.data.userData.loginCount == 0) { 
+                instance.patch(`/user/${result.data.userId}`, { loginCount : result.data.userData.loginCount + 1})
                 router.push('/user/userdetails')
             } else {
+                instance.patch(`/user/${result.data.userId}`, { loginCount : result.data.userData.loginCount + 1})
                 router.push('/')
             }
         } catch (e) {
