@@ -5,16 +5,16 @@
   border-radius: 50%;
   overflow: hidden;
   background-color: #111;
-top: 80px;
+  top: 80px;
 }
 .profileImage {
-    object-fit: cover;
-    width: 200px;
-    height: 200px;
-    opacity: 1;
-    transition: opacity 0.2s ease-in-out;
-  }
-.avatar:hover .widget { 
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+.avatar:hover .widget {
   opacity: 1;
 }
 .avatar:hover .profileImage {
@@ -41,66 +41,66 @@ top: 80px;
   width: 50%;
   text-align: center;
 }
-.followerCount{
-    display: flex;
-    flex-direction: row;
+.followerCount {
+  display: flex;
+  flex-direction: row;
 }
-.info{
-    margin: 10px 50px 0 0;
+.info {
+  margin: 10px 50px 0 0;
 }
-.info span{
-    display: block;
-    text-align: center;
+.info span {
+  display: block;
+  text-align: center;
 }
-.userInfo{
-    padding: 50px 100px 0 100px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    justify-content: center;
+.userInfo {
+  padding: 50px 100px 0 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  justify-content: center;
 }
-.userDetails{
-    width: 600px;
-    margin: 50px 50px;
-    padding: 0 30px;
+.userDetails {
+  width: 600px;
+  margin: 50px 50px;
+  padding: 0 30px;
 }
-.userName{
-    font-size: 28px;
-    font-weight: 600;
+.userName {
+  font-size: 28px;
+  font-weight: 600;
 }
-.category{
-    display: block;
-    font-size: 14px;
-    color: #292929c9;
+.category {
+  display: block;
+  font-size: 14px;
+  color: #292929c9;
 }
-.bio{
-    margin: 30px 0;
-    text-align: justify;
+.bio {
+  margin: 30px 0;
+  text-align: justify;
 }
-.bio a{
-    background-color: #9d9d9d8c;
-    text-decoration: none;
-    border-radius: 0.9rem;
-    display: inline-block;
-    font-size: 13px;
-    padding: 5px 6px;
-    margin-top: 5px;
+.bio a {
+  background-color: #9d9d9d8c;
+  text-decoration: none;
+  border-radius: 0.9rem;
+  display: inline-block;
+  font-size: 13px;
+  padding: 5px 6px;
+  margin-top: 5px;
 }
-.timeline{
-    margin: 0 120px;
+.timeline {
+  margin: 0 120px;
 }
-.posts{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin: 0 60px;
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 60px;
 }
-.singleImage{
-    width: 350px;
-    height: 180px;
-    object-fit: fill;
-    margin: 30px 10px;
-    display: inherit;
-    justify-content: center;
+.singleImage {
+  width: 350px;
+  height: 180px;
+  object-fit: fill;
+  margin: 30px 10px;
+  display: inherit;
+  justify-content: center;
 }

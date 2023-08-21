@@ -33,8 +33,8 @@ const Navbar = (props) => {
                         <Link className={props.currentPage == "home" ? styles.active : styles.off} href={'/'}>Home</Link>
                     </span>
                     <span>
-                        <div className={props.currentPage == "profile" ? styles.active : styles.off}
-                            onClick={()=>{ router.push( { pathname : `/user/${props.user}`})}}>Profile</div>
+                        <span className={props.currentPage == "profile" ? styles.active : styles.off}
+                            onClick={()=>{ router.push( { pathname : `/user/${props.user}`})}}>Profile</span>
                     </span>
                     <span>
                         {

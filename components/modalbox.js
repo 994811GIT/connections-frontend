@@ -47,6 +47,8 @@ const ModalBox = (props) => {
             data.user = getUser()
             const result = await instance.post('/post', data)
             console.log(result)
+            const updatedPost = await instance.get('/post')
+            props.state.setPost(updatedPost.data)
             e()
         }
     }

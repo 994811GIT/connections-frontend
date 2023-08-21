@@ -3,15 +3,12 @@ import Navbar from '../../components/navbar'
 import PostCard from '../../components/postcard'
 import Activeuser from '../../components/activeuser'
 import withAuth from '../../utils/withAuth'
-import { FcPlanner, FcStatistics, FcCloseUpMode, FcAdvertising, FcTemplate, FcHome, FcPuzzle, FcGlobe } from "react-icons/fc";
 import FileUpload from '../../components/fileuploader'
 import { MdCollections, MdVideoCall, MdOutlineEventNote } from "react-icons/md";
 import ModalBox from '../../components/modalbox'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, createContext } from 'react'
 import instance from '../../utils/axios'
 import { getUser } from '../../utils'
-import { Provider, useDispatch } from 'react-redux'
-import { configureStore } from '@reduxjs/toolkit'
 
 export default withAuth(function Home() {
 
@@ -69,8 +66,7 @@ export default withAuth(function Home() {
   const [post, setPost] = useState([])
   const [user, setUser] = useState("")
   const [showModal, setShowModal] = useState(false)
-  // const dispatch = useDispatch()
-  // const store = configureStore()
+  const UserContext = createContext()
 
   const handleClick = () => {
     setShowModal(true)
@@ -81,9 +77,7 @@ export default withAuth(function Home() {
 
   const getPosts = async () => {
     const data = await instance.get('/post')
-    // console.log(data.data)
     setPost(data.data)
-    // console.log(data.data.length)
   }
 
   const getUserData = async () => {
@@ -99,18 +93,19 @@ export default withAuth(function Home() {
 
 
   return (
+    <UserContext.Provider value={{post, setPost}}>
       <>
         <Navbar currentPage="home" user={getUser()} />
         <div className={styles.home}>
           <div className={styles.sidebar}>
-            <span><FcHome />Groups</span>
-            <span><FcPuzzle />Activities</span>
-            <span><FcAdvertising />Community</span>
-            <span><FcTemplate />Pages</span>
-            <span><FcPlanner />Events</span>
-            <span><FcStatistics />Grow Audience</span>
-            <span><FcGlobe />Explore</span>
-            <span><FcCloseUpMode />Promotions</span>
+            <span>Groups</span>
+            <span>Activities</span>
+            <span>Community</span>
+            <span>Pages</span>
+            <span>Events</span>
+            <span>Grow Audience</span>
+            <span>Explore</span>
+            <span>Promotions</span>
           </div>
           <div className={styles.content}>
             <div className={styles.post}>
@@ -143,8 +138,9 @@ export default withAuth(function Home() {
             }
           </div>
         </div>
-        {showModal && <ModalBox onClick={closeModal} user={user} />}
+        {showModal && <ModalBox onClick={closeModal} user={user} state={{post, setPost}} />}
       </>
+    </UserContext.Provider>
   )
 }
 )

@@ -37,9 +37,20 @@
 }
 .imageView{
     object-fit: cover;
+    display: flex;
+    justify-content: center;
 }
 @media screen and (max-width: 844px) {
     .post{
         margin: 15px;
     }
+}
+.postTime{
+    color: #7d7878b7;
+    font-weight: 400;
+    font-size: 14px;
+}
+.userInteract{
+    display: flex;
+    flex-direction: column;
 }
