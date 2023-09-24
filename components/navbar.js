@@ -9,11 +9,16 @@ const Navbar = (props) => {
 
     const router = useRouter()
     const [token, setToken] = useState('')
+    const [query,setQuery]  =useState()
 
     useEffect(() => {
         setToken(getToken())
-        // console.log(props)
     })
+
+    const onChange = (e) =>{
+        console.log(e.target.value)
+        setQuery(e.target.value)
+    }
 
     const logout = () => {
         removeToken()
@@ -26,7 +31,7 @@ const Navbar = (props) => {
             <div className={styles.navbar}>
                 <div className={styles.branding}>
                     <span className={styles.logo}>Connections.io</span>
-                    <Input text="Search..." />
+                    <Input text="Search..." onChange={ (e)=>{ onChange(e) }} />
                 </div>
                 <div className={styles.navRight}>
                     <span>

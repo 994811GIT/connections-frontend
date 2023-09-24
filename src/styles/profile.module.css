@@ -21,6 +21,7 @@
   opacity: 0.5;
 }
 .widget {
+  visibility: hidden;
   position: absolute;
   top: 0;
   right: 0;

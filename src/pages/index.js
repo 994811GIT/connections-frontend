@@ -115,7 +115,7 @@ export default withAuth(function Home() {
               </div>
               <div className={styles.options}>
                 <FileUpload type="button" text="Photo" icon={MdCollections} iconColor="green" onClick={handleClick} />
-                <FileUpload type="button" text="Video" icon={MdVideoCall} iconColor="red" />
+                <FileUpload type="button" text="Go live" icon={MdVideoCall} iconColor="red" />
                 <FileUpload type="button" text="Create Event" icon={MdOutlineEventNote} iconColor="yellow" />
               </div>
             </div>

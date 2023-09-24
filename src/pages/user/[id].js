@@ -2,7 +2,6 @@ import styles from "@/styles/profile.module.css"
 import { useRouter } from "next/router"
 import Navbar from "../../../components/navbar";
 import ImageViewer from "../../../components/imageViewer";
-import { posts } from "../../../utils/posts";
 import withAuth from "../../../utils/withAuth";
 import instance from "../../../utils/axios";
 import { getUser } from "../../../utils";
@@ -17,6 +16,7 @@ const Profile = (props) => {
     const [post, setPost] = useState([])
     const [userId, setUserId] = useState('')
     const [followerCount, setFollowCount] = useState([])
+    const [followingCount, setFollowingCount] = useState([])
     const [follow, setFollow] = useState("")
 
     const getUserData = async () => {
@@ -27,6 +27,9 @@ const Profile = (props) => {
                 setUser(res.data)
                 if (res.data.followers) {
                     setFollowCount(res.data.followers)
+                }
+                if (res.data.following){
+                    setFollowingCount(res.data.following)
                 }
                 if (res.data.followers.includes(getUser())) {
                     console.log("exist")
@@ -52,7 +55,7 @@ const Profile = (props) => {
     }
 
     const followUser = async (userId) => {
-        const result = await instance.post(`/user/${userId}`, { followers: getUser() })
+        const result = await instance.post(`/user/${userId}`, { currentUser: getUser() })
         setFollowCount(result.data.followers)
         setFollow(true)
         console.log(result)
@@ -60,7 +63,7 @@ const Profile = (props) => {
     const unFollowUser = async (userId) => {
         console.log(userId)
         console.log(getUser())
-        const result = await instance.post(`/user/unfollow/${userId}`, { followers: getUser() })
+        const result = await instance.post(`/user/unfollow/${userId}`, { currentUser: getUser() })
         setFollowCount(result.data.followers)
         setFollow(false)
         console.log(result)
@@ -98,7 +101,7 @@ const Profile = (props) => {
                             <span>Followers</span>
                         </div>
                         <div className={styles.info}>
-                            <span style={{ fontWeight: "600" }}>1</span>
+                            <span style={{ fontWeight: "600" }}>{ followingCount.length}</span>
                             <span>Following</span>
                         </div>
                         {user._id != getUser() &&

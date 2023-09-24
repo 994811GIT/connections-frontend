@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create(
     {
-        baseURL : "http://localhost:3000",
+        baseURL : "https://connections-qjpj.onrender.com",
         headers : {
             "Content-Type" : "application/json"
         }
@@ -10,7 +10,7 @@ const instance = axios.create(
 )
 
 export const imgInstance = axios.create({
-    baseURL : "http://localhost:3000",
+    baseURL : "https://connections-qjpj.onrender.com",
     headers : {
         "Content-Type" : "multipart/form-data",
         // Authorization : `Bearer ${getToken()}`
