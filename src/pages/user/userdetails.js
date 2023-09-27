@@ -26,8 +26,8 @@ const Updateuser = () => {
         data.append("file", e.target.files[0])
 
         const url = await imgInstance.post('/upload', data)
-        console.log(url.data.url)
-        setFormData({ ...formData, profilePicture : url.data.url })
+        console.log("Profile picture data :",url.data.url)
+        setFormData({ ...formData, profilePicture : url.data.url[0] })
     }
 
 
@@ -38,6 +38,7 @@ const Updateuser = () => {
 
     const updateData = async() => {
         const userId = getUser()
+        console.log(formData)
         const res = await instance.patch(`/user/${userId}`,formData)
         console.log(res)
         router.push(`/user/${userId}`)
