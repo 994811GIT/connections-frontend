@@ -18,13 +18,15 @@ const Profile = (props) => {
     const [followerCount, setFollowCount] = useState([])
     const [followingCount, setFollowingCount] = useState([])
     const [follow, setFollow] = useState("")
+    const [currentUser, setCurrentUser] = useState()
 
     const getUserData = async () => {
         try {
+            setCurrentUser(getUser)
             if (router.query.id) {
                 const userId = router.query.id
                 const res = await instance.get(`/user/${userId}`)
-                setUser(res.data)
+                await setUser(res.data)
                 if (res.data.followers) {
                     setFollowCount(res.data.followers)
                 }
@@ -55,8 +57,9 @@ const Profile = (props) => {
     }
 
     const followUser = async (userId) => {
-        const result = await instance.post(`/user/${userId}`, { currentUser: getUser() })
-        setFollowCount(result.data.followers)
+        console.log("current logged user is",currentUser)
+        const result = await instance.post(`/user/${userId}`, { currentUser: currentUser })
+        await setFollowCount(result.data.followers)
         setFollow(true)
         console.log(result)
     }
@@ -64,8 +67,8 @@ const Profile = (props) => {
         console.log(userId)
         console.log(getUser())
         const result = await instance.post(`/user/unfollow/${userId}`, { currentUser: getUser() })
-        setFollowCount(result.data.followers)
-        setFollow(false)
+        await setFollowCount(result.data.followers)
+        await setFollow(false)
         console.log(result)
     }
 
