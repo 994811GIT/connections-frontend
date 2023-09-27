@@ -30,7 +30,7 @@ const Profile = (props) => {
                 if (res.data.followers) {
                     setFollowCount(res.data.followers)
                 }
-                if (res.data.following){
+                if (res.data.following) {
                     setFollowingCount(res.data.following)
                 }
                 if (res.data.followers.includes(getUser())) {
@@ -42,7 +42,6 @@ const Profile = (props) => {
         } catch (e) {
             console.log(e)
         }
-
     }
     const getPosts = async () => {
         try {
@@ -57,7 +56,7 @@ const Profile = (props) => {
     }
 
     const followUser = async (userId) => {
-        console.log("current logged user is",currentUser)
+        console.log("current logged user is", currentUser)
         const result = await instance.post(`/user/${userId}`, { currentUser: currentUser })
         await setFollowCount(result.data.followers)
         setFollow(true)
@@ -82,56 +81,66 @@ const Profile = (props) => {
     return (
         <div>
             <Navbar currentPage="profile" user={userId} />
-            <div className={styles.userInfo}>
-                <div className={styles.avatar}>
-                    <img className={styles.profileImage} src={user.profilePicture} />
-                    <div className={styles.widget}>
-                        <span>Edit</span>
-                    </div>
-                </div>
-                <div className={styles.userDetails}>
-                    <div className={styles.user}>
-                        <span className={styles.userName}>{user.name}</span>
-                        <span className={styles.category}>{user.category}</span>
-                    </div>
-                    <div className={styles.followerCount}>
-                        <div className={styles.info}>
-                            <span style={{ fontWeight: "600" }}>{post.length}</span>
-                            <span>posts</span>
-                        </div>
-                        <div className={styles.info}>
-                            <span style={{ fontWeight: "600" }}>{followerCount.length}</span>
-                            <span>Followers</span>
-                        </div>
-                        <div className={styles.info}>
-                            <span style={{ fontWeight: "600" }}>{ followingCount.length}</span>
-                            <span>Following</span>
-                        </div>
-                        {user._id != getUser() &&
-                            <div className={styles.follow}>
-                                {follow == false ? <span><Button text="Follow" class="green" onClick={() => { followUser(user._id) }} /></span>
-                                    : <span><Button text="Following" class="green" onClick={() => { unFollowUser(user._id) }} /></span>}
-                            </div>}
-                    </div>
-                    <div className={styles.bio}>
-                        <p>
-                            {user.bio}
-                        </p>
-                        <a href={user.link}>{user.link}</a>
-                    </div>
-                </div>
-            </div>
-            <div className={styles.timeline}>
-                <div className={styles.posts}>
-                    {
-                        post.map((item, index) => {
-                            return (
-                                <div className={styles.singleImage} key={index}>
-                                    <ImageViewer image={item.image} />
+            <div className={styles.profileBody}>
+                <div className={styles.container}>
+                    <div className={styles.userInfo}>
+                        <div className={styles.imageSection}>
+                            <div className={styles.avatar}>
+                                <img className={styles.profileImage} src={user.profilePicture} />
+                                <div className={styles.widget}>
+                                    <span>Edit</span>
                                 </div>
-                            )
-                        })
-                    }
+                            </div>
+                        </div>
+                        <div className={styles.userDetails}>
+                            <div className={styles.user}>
+                                <div className={styles.userData}>
+                                    <span className={styles.userName}>{user.name}</span>
+                                    <span className={styles.category}>{user.category}</span>
+                                </div>
+                                {user._id != getUser() &&
+                                    <div className={styles.follow}>
+                                        {follow == false ? <span><Button text="Follow" class="green" onClick={() => { followUser(user._id) }} /></span>
+                                            : <span><Button text="Following" class="green" onClick={() => { unFollowUser(user._id) }} /></span>}
+                                    </div>}
+                            </div>
+
+                            <div className={styles.followerCount}>
+                                <div className={styles.info}>
+                                    <span style={{ fontWeight: "600" }}>{post.length}</span>
+                                    <span>posts</span>
+                                </div>
+                                <div className={styles.info}>
+                                    <span style={{ fontWeight: "600" }}>{followerCount.length}</span>
+                                    <span>Followers</span>
+                                </div>
+                                <div className={styles.info}>
+                                    <span style={{ fontWeight: "600" }}>{followingCount.length}</span>
+                                    <span>Following</span>
+                                </div>
+
+                            </div>
+                            <div className={styles.bio}>
+                                <p>
+                                    {user.bio}
+                                </p>
+                                <a href={user.link}>{user.link}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.timeline}>
+                    <div className={styles.posts}>
+                        {
+                            post.map((item, index) => {
+                                return (
+                                    <div className={styles.singleImage} key={index}>
+                                        <ImageViewer image={item.image} />
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </div>

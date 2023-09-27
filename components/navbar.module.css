@@ -63,14 +63,21 @@
         justify-content: center;
         align-items: center;
     }
-    .navbar input{
-        visibility: hidden;
-    }
     .branding{
         height: 50px;
+        margin: 0;
         width: 100%;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
+    }
+    .branding input{
+        background-color: aquamarine;
+        border: 1px solid black;
+        display: none;
+    }
+    .logo{
+        display: flex;
+        align-items: center;
     }
     .navRight{
         height: 50px;
