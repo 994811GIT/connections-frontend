@@ -71,6 +71,26 @@ const Profile = (props) => {
         console.log(result)
     }
 
+    const renderFollowButton = () => {
+        if (user._id !== currentUser) {
+            return (
+                <div className={styles.follow}>
+                    {follow === false ? (
+                        <span>
+                            <Button text="Follow" class="green" onClick={() => followUser(user._id)} />
+                        </span>
+                    ) : (
+                        <span>
+                            <Button text="Following" class="green" onClick={() => unFollowUser(user._id)} />
+                        </span>
+                    )}
+                </div>
+            );
+        }
+        return null; // Render nothing if the condition is not met
+    }
+
+
 
     useEffect(() => {
         getUserData()
@@ -98,11 +118,10 @@ const Profile = (props) => {
                                     <span className={styles.userName}>{user.name}</span>
                                     <span className={styles.category}>{user.category}</span>
                                 </div>
-                                {user._id != getUser() &&
-                                    <div className={styles.follow}>
-                                        {follow == false ? <span><Button text="Follow" class="green" onClick={() => { followUser(user._id) }} /></span>
-                                            : <span><Button text="Following" class="green" onClick={() => { unFollowUser(user._id) }} /></span>}
-                                    </div>}
+                                <div className={styles.userInteraction}>
+                                    {renderFollowButton()}
+                                    {/* <Button text="Message" class="green"/> */}
+                                </div>
                             </div>
 
                             <div className={styles.followerCount}>

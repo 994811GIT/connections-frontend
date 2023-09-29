@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import styles from "./postcard.module.css";
 import TimeAgo from "react-timeago"
-import { useEffect } from "react";
+import LikeButton from "./likebutton";
+import { FaIcons } from "../icons/icons"
 
 const PostCard = (props) => {
 
@@ -25,6 +26,11 @@ const PostCard = (props) => {
             <div className={styles.imageView}>
                 <img src={props.image} />
             </div>
+            {/* <div className={styles.userReaction}>
+                <span>
+                    <LikeButton />
+                </span>
+            </div> */}
         </div>
     );
 };

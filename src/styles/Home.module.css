@@ -20,7 +20,7 @@
   cursor: pointer;
 }
 .sidebar {
-  display: inherit;
+  display: flex;
   flex-direction: column;
   padding: 30px 40px 0 40px;
   line-height: 20px;
@@ -39,53 +39,59 @@
   width: 20%;
   height: 100vh;
   border-radius: 0.3rem;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   box-sizing: border-box;
   background-color: #ffffff;
   border: 1px solid rgba(128, 128, 128, 0.415);
 }
-.post{
-    display: flex;
-    flex-direction: column;
-    width: auto;
-    height: 130px;
-    padding:25px 40px;
-    margin: 0 40px 10px 40px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 0.3rem;
-    background-color: #ffffff;
-    box-sizing: border-box;
-    object-fit: contain;
-    font-size: 14px;
+.post {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 130px;
+  padding: 25px 40px;
+  margin: 0 40px 10px 40px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 0.3rem;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  object-fit: contain;
+  font-size: 14px;
 }
-.btngroup{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+.btngroup {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
-.text{
-    display: flex;
-    padding: 10px;
-    color: gray;
-    font-weight: 600;
-    width: 500px;
-    justify-content: flex-start;
-    background-color: #ffffff;
-    border-radius: 1.5rem;
-    border: 1px solid gray;
-    height: 40px;
-    margin-left: 10px;
+.text {
+  display: flex;
+  padding: 10px;
+  color: gray;
+  font-weight: 600;
+  width: 500px;
+  justify-content: flex-start;
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  border: 1px solid gray;
+  height: 40px;
+  margin-left: 10px;
 }
-.text:hover{
-    background-color: rgba(128, 128, 128, 0.219);
+.text:hover {
+  background-color: rgba(128, 128, 128, 0.219);
 }
 .profileImage {
   width: 42px;
   border-radius: 50%;
   transition: opacity 0.2s ease-in-out;
 }
-@media screen and (max-width: 844px) {
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+@media screen and (max-width: 768px) {
   .home {
     display: flex;
     flex-direction: column;
@@ -93,20 +99,26 @@
     margin: 0;
     padding: 0;
   }
+  .post {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 1.8rem);
+    height: 130px;
+    padding: 25px 40px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0.3rem;
+    background-color: #ffffff;
+    margin: 0 auto;
+  }
   .sidebar {
-    visibility: hidden;
-    width: 0;
-    height: 0;
+    display: none;
+  }
+  .activeUsers {
+    display: none;
   }
   .content {
     width: 100%;
     padding: 0;
     margin: 90px 0;
   }
-}
-.options{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 10px 0;
 }

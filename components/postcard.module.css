@@ -41,6 +41,15 @@
     display: flex;
     justify-content: center;
 }
+.userReaction{
+    display: flex;
+    height: 30px;
+    align-items: center;
+    /* overflow: auto; */
+}
+.comment{
+    transform: scale(1.8);
+}
 @media screen and (max-width: 844px) {
     .post{
         margin: 15px;

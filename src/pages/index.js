@@ -68,11 +68,13 @@ export default withAuth(function Home() {
   const [showModal, setShowModal] = useState(false)
   const UserContext = createContext()
 
-  const handleClick = () => {
+  const openModal = () => {
     setShowModal(true)
+    document.body.style.overflow = 'hidden';
   }
   const closeModal = () => {
     setShowModal(false)
+    document.body.style.overflow = 'auto'
   }
 
   const getPosts = async () => {
@@ -93,7 +95,7 @@ export default withAuth(function Home() {
 
 
   return (
-    <UserContext.Provider value={{post, setPost}}>
+    <UserContext.Provider value={{ post, setPost }}>
       <>
         <Navbar currentPage="home" user={getUser()} />
         <div className={styles.home}>
@@ -111,10 +113,10 @@ export default withAuth(function Home() {
             <div className={styles.post}>
               <div className={styles.btngroup}>
                 <img className={styles.profileImage} src={user.profilePicture} />
-                <input className={styles.text} type="button" value="Write something" onClick={handleClick} />
+                <input className={styles.text} type="button" value="Write something" onClick={openModal} />
               </div>
               <div className={styles.options}>
-                <FileUpload type="button" text="Photo" icon={MdCollections} iconColor="green" onClick={handleClick} />
+                <FileUpload type="button" text="Photo" icon={MdCollections} iconColor="green" onClick={openModal} />
                 <FileUpload type="button" text="Go live" icon={MdVideoCall} iconColor="red" />
                 <FileUpload type="button" text="Create Event" icon={MdOutlineEventNote} iconColor="yellow" />
               </div>
@@ -138,7 +140,7 @@ export default withAuth(function Home() {
             }
           </div>
         </div>
-        {showModal && <ModalBox onClick={closeModal} user={user} state={{post, setPost}} />}
+        {showModal && <ModalBox onClick={closeModal} user={user} state={{ post, setPost }} />}
       </>
     </UserContext.Provider>
   )
