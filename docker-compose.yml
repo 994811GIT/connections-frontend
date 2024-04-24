@@ -30,6 +30,5 @@ services:
 networks:
   network-frontend:
     driver: bridge
-networks:
   network-backend:
     driver: bridge
